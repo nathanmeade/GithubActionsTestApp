@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: nathanmeade/ConnectionErrorJoke
+          ref: githubActionCompatibility
           path: ConnectionErrorJoke
 
       - name: Setup JDK
