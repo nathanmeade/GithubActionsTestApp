@@ -18,12 +18,24 @@ jobs:
           encodedString: ${{ secrets.KEYSTORE }}
       - uses: actions/checkout@v3
 
+      - name: Checkout tools repo
+        uses: actions/checkout@v3
+        with:
+          repository: nathanmeade/ConnectionErrorJoke
+          ref: githubActionCompatibility
+          path: ConnectionErrorJoke
+
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
           cache: gradle
+
+      - name: Access API_KEY
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: echo API_KEY=\"$API_KEY\" > ./local.properties
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
