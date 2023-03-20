@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "apiKey", System.getenv("API_KEY").toString() ?: "\"nothing\""
+            buildConfigField "String", "apiKey", getApiKey() ?: "\"nothing\""
         }
         release {
             minifyEnabled false
@@ -33,6 +33,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+String getApiKey() {
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+    return properties['API_KEY']
 }
 
 dependencies {
