@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "apiKey", System.getenv("API_KEY") ?: "\"nothing\""
+            buildConfigField "String", "apiKey", "\"nothing\""
         }
         release {
             minifyEnabled false
