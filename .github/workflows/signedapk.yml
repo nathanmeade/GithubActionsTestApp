@@ -10,13 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Decode Keystore
-        id: decode_keystore
-        uses: timheuer/base64-to-file@v1.2
-        with:
-          fileName: 'keystore/your_signing_keystore.jks'
-          encodedString: ${{ secrets.KEYSTORE }}
-      - uses: actions/checkout@v3
+      # - name: Decode Keystore
+      #   id: decode_keystore
+      #   uses: timheuer/base64-to-file@v1.2
+      #   with:
+      #     fileName: 'keystore/your_signing_keystore.jks'
+      #     encodedString: ${{ secrets.KEYSTORE }}
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Checkout tools repo
         uses: actions/checkout@v3
